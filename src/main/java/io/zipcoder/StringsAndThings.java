@@ -15,7 +15,15 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        String [] words = input.split("\\s");
+        int count = 0;
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            String lastLetter = String.valueOf((word.charAt(words.length)));
+            if(lastLetter.equalsIgnoreCase("Y")||lastLetter.equalsIgnoreCase("Z")) {
+                count += 1;
+            }
+        } return count;
     }
 
     /**
@@ -28,8 +36,21 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        StringBuilder newString = new StringBuilder();
+        char[] chbase = base.toCharArray();
+        char[] chrem = remove.toCharArray();
+        int length = base.length();
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < chrem.length; j++) {
+                if((chbase[i]) != chrem[j]){
+                    newString.append(chbase[i]);
+                    break;
+                }
+            }
+        } return newString.toString();
     }
+        //return String.valueOf(new StringBuilder(base).delete(base.indexOf(remove.charAt(0)),base.indexOf(remove.charAt(remove.length()-1))));
+
 
     /**
      * Given a string, return true if the number of appearances of "is" anywhere in the string is equal
@@ -40,7 +61,13 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        int isCount = 0;
+        int notCount = 0;
+        for (String s : input.split("\\s")) {
+            if(s.contains("is")) isCount++;
+            else if (s.contains("not")) notCount++;
+        }
+        return (isCount == notCount);
     }
 
     /**
